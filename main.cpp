@@ -1,7 +1,7 @@
 #include <iostream>
 #include "vector"
 using namespace std;
-
+//对顺序表的基本操作
 struct SeqList{
     int maxmum;
     int n;//存放线性表中元素的个数，n<=MAXNUM
