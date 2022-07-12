@@ -41,9 +41,15 @@ PNode LocateX(LinkList list, char x){
     return NULL;
 }
 
-bool insertPost_link(LinkList list, PNode p,char data){//在带头结点带单链表中，插入值为data的新结点
-
-
+bool insertPost_link(LinkList list, PNode p,char data){//在带头结点带单链表中，在p所指的结点后，插入值为data的新结点
+    PNode alice=(struct Node*)malloc(sizeof(struct Node));
+    if (alice == NULL) {
+        return false;
+    }
+    alice->info=data;
+    alice->next=p->next;
+    p->next=alice;
+    return true;
 }
 
 int main(){
