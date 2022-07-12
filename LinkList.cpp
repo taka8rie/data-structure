@@ -12,6 +12,7 @@ struct Node{
 };
 typedef struct Node *LinkList;
 
+//创建一个空链表
 LinkList createNullList_link(){
    //LinkList list=(Node*) malloc(sizeof(struct Node));
    Node *list=new Node;
@@ -22,14 +23,14 @@ LinkList createNullList_link(){
     }
     return list;
 }
-
+//判断链表是否为空
 bool isNullList_link(LinkList list){
     if (list->next == NULL) {
         return false;
     }
     return true;
 }
-
+//确定元素x的位置
 PNode LocateX(LinkList list, char x){
     PNode temp;
     for (temp->next = list->next->next,temp->info=list->next->info;
@@ -40,8 +41,8 @@ PNode LocateX(LinkList list, char x){
     }
     return NULL;
 }
-
-bool insertPost_link(LinkList list, PNode p,char data){//在带头结点带单链表中，在p所指的结点后，插入值为data的新结点
+//在带头结点带单链表中，在p所指的结点后，插入值为data的新结点
+bool insertPost_link(PNode p, char data) {
     PNode alice=(struct Node*)malloc(sizeof(struct Node));
     if (alice == NULL) {
         return false;
@@ -50,6 +51,19 @@ bool insertPost_link(LinkList list, PNode p,char data){//在带头结点带单�
     alice->next=p->next;
     p->next=alice;
     return true;
+}
+
+//在单链表中求p所指结点的前驱结点
+PNode findPre(LinkList list, PNode p){
+    PNode alice=list;
+    for (; alice->next != p; alice = alice->next) ;
+    return alice;
+}
+
+//删除第一个元素为x的结点，返回成功与否的标志
+bool delete_link(LinkList list,char x){
+    PNode alice=list;
+    for (; alice->info != x; alice = alice->next);
 }
 
 int main(){
