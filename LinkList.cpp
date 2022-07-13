@@ -71,6 +71,7 @@ bool delete_link(LinkList list,char x){
     alice->next=temp->next;alice->info=temp->info;
     temp->next=NULL;
     free(temp);
+    cout<<"delete success "<<endl;
     return list;
 }
 
@@ -82,6 +83,7 @@ int main(){
     isNullList_link(alice);
     p = LocateX(alice, '1');
     cout<<p->info<<endl;
+    delete_link(alice, '2');
     return 0;
 
 }
