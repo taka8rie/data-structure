@@ -14,8 +14,8 @@ typedef struct Node *LinkList;
 
 //创建一个空链表
 LinkList createNullList_link(){
-   //LinkList list=(Node*) malloc(sizeof(struct Node));
-   Node *list=new Node;
+//   LinkList list=(Node*) malloc(sizeof(struct Node));
+      Node *list=new Node;
     if (list == NULL) {
         cout << "space not enough"<<endl;
     }else{
@@ -26,24 +26,27 @@ LinkList createNullList_link(){
 //判断链表是否为空
 bool isNullList_link(LinkList list){
     if (list->next == NULL) {
-        return false;
+        cout << "list is null"<<endl;
+        return true;
     }
-    return true;
+    cout << "list is not null"<<endl;
+    return false;
 }
 //确定元素x的位置
 PNode LocateX(LinkList list, char x){
-    PNode temp;
-    for (temp->next = list->next->next,temp->info=list->next->info;
-        temp->next != NULL; temp->next = temp->next->next) {
-        if (temp->info == x) {
-            return temp;
-        }
+    PNode alice=list->next;
+    if (list == NULL) {
+        return NULL;
     }
-    return NULL;
+    while (alice != NULL && alice->info != x) {
+        alice=alice->next;
+    }
+    return alice;
 }
 //在带头结点带单链表中，在p所指的结点后，插入值为data的新结点
-bool insertPost_link(PNode p, char data) {
+bool insertPost_link(LinkList list,char data) {
     PNode alice=(struct Node*)malloc(sizeof(struct Node));
+    PNode p=list;
     if (alice == NULL) {
         return false;
     }
@@ -62,11 +65,23 @@ PNode findPre(LinkList list, PNode p){
 
 //删除第一个元素为x的结点，返回成功与否的标志
 bool delete_link(LinkList list,char x){
-    PNode alice=list;
-    for (; alice->info != x; alice = alice->next);
+    PNode alice=list,temp=list;
+    for (; alice->next->info != x&&alice->next!=NULL; alice = alice->next);
+    temp=alice->next;
+    alice->next=temp->next;alice->info=temp->info;
+    temp->next=NULL;
+    free(temp);
+    return list;
 }
 
 int main(){
-    cout<<"abc";
+    LinkList alice= createNullList_link();
+    PNode p;
+    insertPost_link(alice, '1');
+    insertPost_link(alice, '2');
+    isNullList_link(alice);
+    p = LocateX(alice, '1');
+    cout<<p->info<<endl;
     return 0;
+
 }
