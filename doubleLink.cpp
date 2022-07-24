@@ -29,7 +29,6 @@ lDoubleList createNullDoubleList(){
     return point;
 }
 // 尾插法插入新的元素
-// 尾插法插入新的元素
 void insertData(lDoubleList point,int data){
     pDoubleNode q = (pDoubleNode) malloc(sizeof(DoubleNode));//suppose has enough space
     pDoubleNode p =NULL;
@@ -47,6 +46,21 @@ void insertData(lDoubleList point,int data){
         p->rLink=q;
         point->rear=q;
     }
+}
+
+
+//在特定位置之后添加元素（未完成）
+void insertDataAt(lDoubleList alice, int position, int data){
+    pDoubleNode p=alice->head->rLink;
+    for (int i = 1; i < position; i++) {
+        p=p->rLink;
+    }
+    pDoubleNode q = (pDoubleNode) malloc(sizeof(DoubleNode));
+    q->info=data;
+    q->rLink=p->rLink;
+    q->lLink=p;
+    p->rLink->lLink=q;
+    p->rLink=q;
 }
 
 //traverse all the elements
@@ -70,9 +84,10 @@ void traverseData(lDoubleList point){
 
 int main(){
     lDoubleList alice= createNullDoubleList();
-    insertData(alice, 1);
-    insertData(alice, 2);
-    insertData(alice,3);
+    for (int i = 0; i < 10; i++) {
+        insertData(alice, i);
+    }
+    insertDataAt(alice, 8, 26);
     traverseData(alice);
     return 0;
 }
