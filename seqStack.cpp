@@ -59,5 +59,12 @@ int main(){
         inStack(alice, i);
     }
     traverseStack(alice);
+    cout<<endl;
+    popStack(alice);
+    cout<<endl;
+    traverseStack(alice);
+    cout<<endl;
+    inStack(alice, 11);
+    traverseStack(alice);
     return 0;
 }
