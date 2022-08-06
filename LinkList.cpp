@@ -5,12 +5,17 @@
 #include "iostream"
 using namespace std;
 
-typedef struct Node *PNode;
-struct Node{
-    char info;//链表结点的信息
-    PNode next;//链表结点的指针
-};
-typedef struct Node *LinkList;
+//typedef struct Node *PNode;
+//struct Node{
+//    char info;//链表结点的信息
+//    PNode next;//链表结点的指针
+//};
+//typedef struct Node *LinkList;
+
+typedef struct Node{
+    char info;
+    struct Node * next;
+}*PNode,*LinkList;
 
 //创建一个空链表
 LinkList createNullList_link(){

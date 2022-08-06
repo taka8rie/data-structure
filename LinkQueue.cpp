@@ -67,6 +67,15 @@ void traverseData(PLPoint alice){
         cout<<bob->value<<" ";
     }
 }
+// 如果在创建空链的时候，创建了一个空的Node，那么该结点会自动赋值0？
+//struct test{
+//    int a;
+//};
+//typedef struct test *carlos;
+//
+//void  output(carlos alice){
+//    cout<<alice->a;
+//}
 
 int main(){
     PLPoint alice = createNullLinkNode();
@@ -74,5 +83,8 @@ int main(){
         insertValue(alice, i);
     }
     traverseData(alice);
+    cout<<endl;
+//    carlos bob = (carlos) malloc(sizeof(test));
+//    output(bob);
     return 0;
 }
